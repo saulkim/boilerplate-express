@@ -10,6 +10,10 @@ app.use("/public", express.static(__dirname + "/public"));
 //    next();
 //});
 
+app.get("/name", (req,res) => {
+    res.json({name: req.query.first + " " + req.query.last})
+})
+
 app.get("/now",(req, res, next) => {
     req.time = new Date().toString();
     next();
