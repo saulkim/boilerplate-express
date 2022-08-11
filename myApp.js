@@ -17,6 +17,10 @@ app.get("/now",(req, res, next) => {
     res.json({time: req.time})
 })
 
+app.get("/:word/echo", (req,res) => {
+    res.json({echo: req.params.word})
+})
+
 app.get("/", function(req, res){
     
     res.sendFile(__dirname + "/views/index.html");
