@@ -3,10 +3,19 @@ let app = express();
 require('dotenv').config();
 
 app.use("/public", express.static(__dirname + "/public"));
-app.use((req, res, next) => {
-    console.log(req.method + " " + req.path + " - " + req.ip)
+
+
+//app.use((req, res, next) => {
+//    console.log(req.method + " " + req.path + " - " + req.ip)
+//    next();
+//});
+
+app.get("/now",(req, res, next) => {
+    req.time = new Date().toString();
     next();
-});
+}, (req, res) => {
+    res.json({time: req.time})
+})
 
 app.get("/", function(req, res){
     
