@@ -18,8 +18,12 @@ app.use("/public", express.static(__dirname + "/public"));
 //});
 
 app.get("/name", (req,res) => {
-    res.json({name: req.query.first + " " + req.query.last})
+    res.json({name: req.query.first + " " + req.query.last});
 })
+
+app.post("/name",(req, res) => {
+    res.json({name: req.body.first + " " + req.body.last});    
+});
 
 app.get("/now",(req, res, next) => {
     req.time = new Date().toString();
